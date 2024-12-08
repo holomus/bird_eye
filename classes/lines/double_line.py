@@ -1,8 +1,15 @@
 import cv2
+import numpy as np
 from .line import Line
 
 class DoubleLine(Line):
-    def draw(self, image, color=(255, 255, 255), thickness=2, offset=5):
+    def draw(
+        self, 
+        image: np.ndarray, 
+        color: tuple[int, int, int] = (255, 255, 255), 
+        thickness: int = 2, 
+        offset: int = 5
+    ):
         """
         Draw a double line on an image.
 
@@ -13,7 +20,7 @@ class DoubleLine(Line):
             offset (int): Offset between the two lines.
         """
         # Draw the main line
-        cv2.line(image, self.start.to_tuple(), self.end.to_tuple(), color, thickness)
+        cv2.line(image, self.start.to_XY_tuple(), self.end.to_XY_tuple(), color, thickness)
 
         # Compute offset points and draw the second line
         dx = self.end.x - self.start.x

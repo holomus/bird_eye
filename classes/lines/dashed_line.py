@@ -1,8 +1,15 @@
 import cv2
+import numpy as np
 from .line import Line
 
 class DashedLine(Line):
-    def draw(self, image, color=(255, 255, 255), thickness=2, dash_length=10):
+    def draw(
+        self, 
+        image: np.ndarray, 
+        color: tuple[int, int, int] = (255, 255, 255), 
+        thickness: int = 2, 
+        dash_length: int = 10
+    ):
         """
         Draw a dashed line on an image.
 
