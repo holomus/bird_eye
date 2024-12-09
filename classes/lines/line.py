@@ -26,7 +26,7 @@ class Line(BaseModel):
     """
     return self.start.to_XY_tuple(), self.end.to_XY_tuple()
 
-  def draw(self, image: np.ndarray, color: tuple[int, int, int] = (255, 0, 0), thickness: int = 2):
+  def draw(self, image: np.ndarray, color: tuple[int, int, int] = (255, 255, 0), thickness: int = 1):
     """
     Draw the line on a given image using OpenCV.
 
@@ -51,4 +51,4 @@ class Line(BaseModel):
       raise ValueError("Cannot project a line with 2D points; both points must be 3D.")
     projected_start = self.start.project(projection_matrix)
     projected_end = self.end.project(projection_matrix)
-    return Line(start=projected_start, end=projected_end)
+    return self.__class__(start=projected_start, end=projected_end)

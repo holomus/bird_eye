@@ -70,4 +70,4 @@ class Point(BaseModel):
     x, y, w = projected[:3]
     if w == 0:
       raise ValueError("Homogeneous coordinate w cannot be zero.")
-    return Point(x= x / w, y = y / w)
+    return Point(x= int(x / w), y = int(y / w))

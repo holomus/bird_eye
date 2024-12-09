@@ -35,8 +35,8 @@ class MixedDoubleLine(Line):
     offset_y = offset * dx / length
 
     # Offset start and end points for the dashed line
-    start_offset = Point(self.start.x + offset_x, self.start.y + offset_y)
-    end_offset = Point(self.end.x + offset_x, self.end.y + offset_y)
+    start_offset = Point(x = self.start.x + offset_x, y = self.start.y + offset_y)
+    end_offset = Point(x = self.end.x + offset_x, y = self.end.y + offset_y)
     
-    dashed_offset_line = DashedLine(start_offset, end_offset)
+    dashed_offset_line = DashedLine(start = start_offset, end = end_offset)
     dashed_offset_line.draw(image, color=color_dashed, thickness=thickness, dash_length=dash_length)
