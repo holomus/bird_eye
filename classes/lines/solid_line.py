@@ -11,5 +11,4 @@ class SolidLine(Line):
       thickness (int): Thickness of the line.
       dash_length (int): Length of each dash.
     """
-    color=(255, 255, 255)
-    super().draw(image, color=color, thickness=thickness)
+    super().draw(image, color=(255, 255, 255), thickness=thickness)

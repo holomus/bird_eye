@@ -6,7 +6,7 @@ from ..lines import *
 
 class RoadSegmentGenerator:
   MIN_LANE_NUMBER = 1
-  MAX_LANE_NUMBER = 10
+  MAX_LANE_NUMBER = 6
 
   @classmethod
   def generate(
@@ -16,7 +16,7 @@ class RoadSegmentGenerator:
     lane_width: int = 10,
     lane_length: int = 800,
     offset: int = 5,
-    road_center: Point = Point(x=500, y=100, z=0),
+    road_center: Point = Point(x=0, y=500, z=0),
     seed: Optional[int] = None
   ) -> RoadSegment:
     """
@@ -52,7 +52,8 @@ class RoadSegmentGenerator:
       
       forward_lane_number = (
         forward_lane_number if forward_lane_number is not None 
-        else random.randint(0, lane_number)
+        else int(lane_number // 2)
+        # else random.randint(0, lane_number)
       )
 
       # Comprehensive validation
@@ -97,10 +98,7 @@ class RoadSegmentGenerator:
     # Generate lines for the road segment
     for i in range(lane_number + 1):
       # Calculate lane offset
-      offset_x = (
-        i if i <= forward_lane_number 
-        else i - lane_number - 1
-      ) * lane_width
+      offset_x = i * lane_width
 
       # Create start and end points
       start = Point.from_source_offset(
@@ -113,9 +111,9 @@ class RoadSegmentGenerator:
       )
       
       # Select line class based on lane position
-      if i == 0 and lane_number > 1:
+      if i == forward_lane_number and lane_number > 1:
         line_class = select_middle_line_class()
-      elif i == lane_number or i == forward_lane_number - 1:
+      elif i == 0 or i == lane_number:
         line_class = select_edge_line_class()
       else:
         line_class = select_lane_line_class()

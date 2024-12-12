@@ -23,7 +23,7 @@ class RoadSegment(BaseModel):
       image (numpy.ndarray): The image on which to draw the road segment.
     """
     for line in self.lines:
-      line.draw(image, thickness)
+      line.draw(image=image, thickness=thickness)
 
   def project(self, projection_matrix: np.ndarray) -> RoadSegment:
     """

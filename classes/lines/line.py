@@ -26,7 +26,7 @@ class Line(BaseModel):
     """
     return self.start.to_XY_tuple(), self.end.to_XY_tuple()
 
-  def draw(self, image: np.ndarray, color: tuple[int, int, int] = (255, 255, 0), thickness: int = 1):
+  def draw(self, image: np.ndarray, color: tuple[int, int, int] = (255, 255, 0), thickness: int = 2):
     """
     Draw the line on a given image using OpenCV.
 
