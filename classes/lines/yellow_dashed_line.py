@@ -10,5 +10,4 @@ class YellowDashedLine(DashedLine):
         image (numpy.ndarray): The image on which to draw the line.
         thickness (int): Thickness of the line.
     """
-    color = (0, 255, 255)  # Yellow in BGR
-    super().draw(image, color=color, thickness=thickness, dash_length=dash_length)
+    super().draw(image, color=(0, 255, 255), thickness=thickness, dash_length=dash_length)
